@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Here are your upcoming elections based on your location{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for contest in contests %}
+    <article class="contest">
+      <header>
+        <div>
+          <h1>Office: {{ contest.office }}</h1>
+          <div class="candidates"> 
+            {% for candidate in contest.candidates %}
+              <img src="/static/not-available.jpg">
+              {{ candidate.name }}
+            {% endfor %}
+          </div>
+        </div>
+      </header>
+    </article>
+  {% endfor %}
+{% endblock %}

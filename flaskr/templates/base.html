@@ -1,0 +1,24 @@
+<!doctype html>
+<title>{% block title %}{% endblock %}We Are Voters</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>We are voting!</h1>
+  <ul>
+      <li><span>Click here to get voter info.</span>
+      <li><a href="{{ url_for('user.getUserInfo') }}">More info plz!</a>
+  </ul>
+</nav>
+  <h1>Select an option below and let's get POLTICAL</h1>
+  <ul>
+    <a href="{{ url_for('user.submitAddress') }}">Find Upcoming Elections Near You</a>
+  </ul>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
